@@ -1,0 +1,6 @@
+#!/bin/sh
+SCRIPTDIR=$(dirname "$0")
+BASEDIR=$(dirname "$SCRIPTDIR")
+. "$BASEDIR/.env"
+docker exec dev-local-postgres  /bin/bash -c "psql -h $PG_HOST -p 5432 -U postgres -a -c 'CREATE DATABASE $PG_DBNAME;'"
+

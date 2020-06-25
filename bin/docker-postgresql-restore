@@ -1,0 +1,5 @@
+#!/bin/sh
+SCRIPTDIR=$(dirname "$0")
+BASEDIR=$(dirname "$SCRIPTDIR")
+. "$BASEDIR/.env"
+docker exec dev-local-postgres  /bin/bash -c "pg_restore -h $PG_HOST -p 5432 -U postgres -c -d $PG_DBNAME  < /opt/$PG_EXPORT_FILE_NAME"

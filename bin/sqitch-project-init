@@ -1,0 +1,8 @@
+#!/bin/sh
+SCRIPTDIR=$(dirname "$0")
+BASEDIR=$(dirname "$SCRIPTDIR")
+. "$BASEDIR/.env"
+mkdir $BASEDIR/resources/migration/$BACKENDBASE_APP_NAME
+sqitch --verbose --chdir $BASEDIR/resources/migration/$BACKENDBASE_APP_NAME init $BACKENDBASE_APP_NAME --engine pg
+sqitch --verbose --chdir $BASEDIR/resources/migration/$BACKENDBASE_APP_NAME config --user user.name $ADMIN_USER_FULL_NAME
+sqitch --verbose --chdir $BASEDIR/resources/migration/$BACKENDBASE_APP_NAME config --user user.email $ADMIN_USER_EMAIL

@@ -1,0 +1,10 @@
+.env
+vendor/
+config/*.local.php
+config/backendbase/*.local.php
+config/backendbase/private-api/*.local.php
+config/backendbase/public-web/*.local.php
+config/autoload/*.local.php
+config/autoload/private-api/*.local.php
+config/autoload/public-web/*.local.php
+data/cache/*

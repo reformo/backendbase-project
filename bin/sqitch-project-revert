@@ -1,0 +1,5 @@
+#!/bin/sh
+SCRIPTDIR=$(dirname "$0")
+BASEDIR=$(dirname "$SCRIPTDIR")
+. "$BASEDIR/.env"
+sqitch --verbose --chdir $BASEDIR/resources/migration/$BACKENDBASE_APP_NAME revert db:pg://postgres:$PG_POSTGRES_USER_PASSWORD@$PG_HOST/$PG_DBNAME

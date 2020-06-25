@@ -1,0 +1,6 @@
+#!/bin/sh
+SCRIPTDIR=$(dirname "$0")
+BASEDIR=$(dirname "$SCRIPTDIR")
+bin/sqitch-backendbase-init-files
+bin/sqitch-backendbase-deploy
+

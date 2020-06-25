@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         stopOnFailure="true"
+         verbose="false"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    <php>
+        <ini name="memory_limit" value="-1"/>
+    </php>
+    <testsuites>
+        <testsuite name="Filomingo Unit Tests">
+            <directory>test/UnitTest</directory>
+        </testsuite>
+        <testsuite name="Filomingo Private API Tests">
+            <directory>test/ApiTest</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/Domain</directory>
+            <directory suffix=".php">./src/Common/Services/</directory>
+            <directory suffix=".php">./src/Infrastructure/Persistence</directory>
+            <directory suffix=".php">./src/Infrastructure/Ui/PrivateApi/src</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="storage/temp/clover.xml"/>
+    </logging>
+</phpunit>

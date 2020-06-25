@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=backendbase
+
+appschema 2020-06-10T14:23:29Z Mehmet Korkmaz <mehmet@mkorkmaz.com> # Add schema for all project objects
+forms 2020-06-18T14:23:29Z Mehmet Korkmaz <mehmet@mkorkmaz.com> # Add schema forforms and form data

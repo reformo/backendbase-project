@@ -1,0 +1,4 @@
+<?php
+use BackendBase\Shared\SwooleConfigProvider;
+
+return (new SwooleConfigProvider())();

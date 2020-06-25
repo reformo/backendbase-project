@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+chdir(dirname(__DIR__));
+
+$config = parse_ini_file('.env');
+$config['ADMIN_PASSWORD_HASHED'] = password_hash($config['ADMIN_PASSWORD_PLAIN'], PASSWORD_ARGON2ID);
+$replacements = [];
+foreach ($config as $key => $value) {
+    $replacements['{{' . $key . '}}'] = $value;
+}
+
+$sourceDirs = glob('resources/migration/backendbase/source/*', GLOB_NOSORT);
+
+foreach ($sourceDirs as $sourceDir) {
+    $targetDir = basename($sourceDir);
+    if (! is_dir('resources/migration/backendbase/' . $targetDir)) {
+        mkdir('resources/migration/backendbase/' . $targetDir);
+    }
+    $files = glob('resources/migration/backendbase/source/'.$targetDir.'/*.sql');
+
+    foreach ($files as $file) {
+        $fileName = basename($file);
+        copy($file, 'resources/migration/backendbase/' . $targetDir .'/'. $fileName);
+    }
+}
+foreach ($sourceDirs as $sourceDir) {
+    $targetDir = basename($sourceDir);
+
+    $files = glob('resources/migration/backendbase/'.$targetDir.'/*.sql');
+
+    foreach ($files as $file) {
+
+        $fileContent = file_get_contents($file);
+        $fileContent = strtr($fileContent, $replacements);
+        file_put_contents($file, $fileContent);
+
+    }
+}
+
+
+
+
+
+
+
