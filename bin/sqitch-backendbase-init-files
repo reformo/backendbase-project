@@ -15,7 +15,7 @@ $sourceDirs = glob('resources/migration/backendbase/source/*', GLOB_NOSORT);
 
 foreach ($sourceDirs as $sourceDir) {
     $targetDir = basename($sourceDir);
-    if (! is_dir('resources/migration/backendbase/' . $targetDir)) {
+    if (! file_exists('resources/migration/backendbase/' . $targetDir)) {
         mkdir('resources/migration/backendbase/' . $targetDir);
     }
     $files = glob('resources/migration/backendbase/source/'.$targetDir.'/*.sql');

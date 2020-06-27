@@ -1,0 +1,66 @@
+{% extends '@layout/default.html.twig' %}
+
+{% block title %}<title>{{ page.serpTitle }}</title>{% endblock %}
+{% block seoMetaDescription %}<meta name="description" content="{{ page.metaDescription }}" />{% endblock %}
+{% block seoRobots %}{% if page.robots != "" %}{{ page.robots }}{% endif %}{% endblock %}
+{% block seoKeywords %} <meta name="keywords" content="{{ page.keywords }}" />{% endblock %}
+
+{% block content %}
+    <h3>Contact Form</h3>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-lg-5 ">
+                            <div class="contact-form">
+                                {% if result != 'success' %}
+                                    {% if result == '' %}
+                                    {% elseif result == 'invalid-csrf-token' %}
+                                        <div class="alert alert-error alert-danger">
+                                            CSRF token couldn't be verified, please try again.
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-error alert-danger">
+                                            Your submission couldn't be saved. Please check your inputs or try agai later.
+                                        </div>
+                                    {% endif %}
+                                <form name="miss-form" id="miss-form" method="POST" action="{{ url('contact.form') }}">
+                                    <input type="hidden" name="__csrf" value="{{ __csrf }}" />
+                                    <input type="hidden" name="form_id" value="99800ea7-6faa-46d7-bc33-d73a6d538171" />
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Your name" name="fullName" value="{{ queryParams.nameSurname|default('') }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="email" placeholder="E-mail address" name="email" value="{{ queryParams.email|default('')  }}"  required>
+                                    </div>
+                                    <div class="form-group selectbox">
+                                        <select class="form-control" name="subject" required>
+                                            <option value="" disabled selected hidden>Subject</option>
+                                            <option value="request">Request</option>
+                                            <option value="suggestion">Suggestion</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Your message" name="message" required>{{ queryParams.message|default('')  }}</textarea>
+                                    </div>
+                                    <div class="form-group contact-permission">
+                                        <label>
+                                            <input  type="checkbox" name="confirmation" required>
+                                               I read and accepted <a href="{{ url('home') }}privacy" target="_blank">Privacy Policy</a>.
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" id="form-send" type="submit">Gönder</button>
+                                    </div>
+                                </form>
+                                    {% else %}
+                                        <div class="alert alert-dark alert-dismissible fade show" role="alert" id="success-form-message"> Formunuz başarı ile gönderilmiştir.
+                                            <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="btn-buynow"><a href="{{ url('contact.form') }}">Yeni Mesaj Gönder</a></div>
+                                {% endif  %}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+{% endblock %}

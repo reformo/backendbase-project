@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0313c1269e003d1a4a4326030f1cf8cf",
+    "content-hash": "2fc5dd77d274c0eb8b898052315c2d51",
     "packages": [
         {
             "name": "akrabat/ip-address-middleware",
@@ -5491,16 +5491,16 @@
         },
         {
             "name": "reformo/backendbase-core",
-            "version": "dev-master",
+            "version": "0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reformo/backendbase-core.git",
-                "reference": "b88276f"
+                "reference": "11fab18d67d4b6ca06b1265fbdeded56779f5ddd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reformo/backendbase-core/zipball/b88276f",
-                "reference": "b88276f",
+                "url": "https://api.github.com/repos/reformo/backendbase-core/zipball/11fab18d67d4b6ca06b1265fbdeded56779f5ddd",
+                "reference": "11fab18d67d4b6ca06b1265fbdeded56779f5ddd",
                 "shasum": ""
             },
             "require": {
@@ -5623,7 +5623,7 @@
                 "tactician",
                 "zf"
             ],
-            "time": "2020-06-24T17:01:25+00:00"
+            "time": "2020-06-27T11:14:34+00:00"
         },
         {
             "name": "robinvdvleuten/ulid",
@@ -10364,7 +10364,6 @@
     "aliases": [],
     "minimum-stability": "RC",
     "stability-flags": {
-        "reformo/backendbase-core": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

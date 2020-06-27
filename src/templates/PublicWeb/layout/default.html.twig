@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="{{ translate('_LANG') }}" dir="{{ translate('_DIR') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;500&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
+
+    {% block title %}{% endblock %}
+    {% block seoMetaDescription %}{% endblock %}
+    {% block seoKeywords %}{% endblock %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    <link href="{{ url('home') }}node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+        /*
+         * Base structure
+         */
+
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            font-family: "Muli", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            line-height: 24px;
+            color: rgba(0,0,0, .75);
+        }
+
+
+
+        /*
+         * Header
+         */
+        header.masthead  {
+            background-color: #352b4e;
+            width: 100%;
+            height: 80px;
+            padding-top:20px;
+            color: #eee;
+            position: fixed;
+            top:0;
+            z-index: 10;
+        }
+        .masthead .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .nav-masthead .nav-link {
+            padding: .25rem 0;
+            font-weight: 400;
+            color: rgba(255, 255, 255, .5);
+            background-color: transparent;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-masthead .nav-link:hover,
+        .nav-masthead .nav-link:focus {
+            border-bottom-color: rgba(255, 255, 255, .25);
+        }
+
+        .nav-masthead .nav-link + .nav-link {
+            margin-left: 1rem;
+        }
+
+        .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+        .masthead-brand {
+            color : rgba(255,255, 255, 0.85)
+        }
+
+        @media (min-width: 48em) {
+            .masthead-brand {
+                float: left;
+            }
+            .nav-masthead {
+                float: right;
+            }
+        }
+
+
+        .content {
+            margin: 20px auto;
+            max-width: 1200px;
+            font-size: 14px;
+            margin-top: 100px;
+
+            margin-bottom: 80px;
+        }
+        .content .home {
+            margin-top:100px;
+        }
+        a {
+            color: rgb(0, 102, 204)
+        }
+        a:hover {
+            padding-bottom: 3px;
+            color: rgb(0, 102, 204);
+            text-decoration: none;
+            border-bottom: 1px solid rgb(0, 102, 204);
+        }
+
+        /*
+         * Footer
+         */
+        .mastfoot {
+            color: rgba(0,0,0, .65);
+            background: #fff;
+            margin-top: 60px;
+            padding-top:20px;
+            height: 60px;
+            border-top: 1px solid rgba(0,0,0, .04);
+            position: fixed;
+            z-index: 10;
+            bottom:0;
+            width: 100%;
+        }
+         h1, h2, h3, h4, h5, h6 {
+             font-weight: 200;
+             color: rgba(0,0,0, .85);
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="masthead">
+        <div class="inner">
+            <h3 class="masthead-brand">BackendBase Demo App</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link {%if path() == path('home') %} active {% endif %}" href="{{ url('home') }}">Home</a>
+                <a class="nav-link {%if path() == path('demo_module.main') %} active {% endif %}" href="{{ url('demo_module.main') }}">Demo Module</a>
+                <a class="nav-link {%if path() == path('contact.form') %} active {% endif %}" href="{{ url('contact.form') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+    {% block content %}{% endblock %}
+    </div>
+
+
+    <footer class="mastfoot text-center">
+        <div class="inner">
+            <p>Developed using with <a href="https://github.com/reformo/backendbase">BackendBase</a>. Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, based on by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+    </footer>
+</div>
+{% block header %}{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block javascript %}{% endblock %}
+</body>
+
+</html>

@@ -11,5 +11,4 @@ return [
         'api-key' => getenv('PUBLIC_API_KEY'),
         'enable-api-key' => filter_var(getenv('ENABLE_PUBLIC_API_KEY'), FILTER_VALIDATE_BOOLEAN)
     ],
-    'user-app' => 'miss-arap-sabunu'
 ];

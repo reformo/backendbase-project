@@ -8,3 +8,10 @@ config/autoload/*.local.php
 config/autoload/private-api/*.local.php
 config/autoload/public-web/*.local.php
 data/cache/*
+data/logs/*.log
+data/storage/temp/*
+resources/docker/data/docker-postgres-data/*
+resources/migration/backendbase/deploy/
+resources/migration/backendbase/verify/
+resources/migration/backendbase/revert/
+resources/migration/*

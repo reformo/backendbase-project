@@ -1,5 +1,5 @@
 {
-    "name": "reformo/hexagonal-cqrs-skeleton",
+    "name": "reformo/backendbase-project",
     "description": "Hexagonal (Ports and Adapters) Architecture and CQRS Ready Zend Expressive Skeleton!",
     "type": "project",
     "homepage": "https://github.com/reformo/backendbase-project",
@@ -43,7 +43,7 @@
     },
     "require": {
         "php": "^7.4",
-        "reformo/backendbase-core": "dev-master"
+        "reformo/backendbase-core": "^0.1"
     },
     "require-dev": {
         "behat/behat": "^v3.7.0",
@@ -60,13 +60,11 @@
     },
     "autoload": {
         "psr-4": {
-
-            "MissArapSabunu\\Doctrine\\": "data/cache/Doctrine/",
-            "MissArapSabunu\\Common\\": "src/MissArapSabunu/Common/",
-            "MissArapSabunu\\Domain\\": "src/MissArapSabunu/Domain/",
-            "MissArapSabunu\\Infrastructure\\": "src/MissArapSabunu/Infrastructure/",
-            "MissArapSabunu\\PrivateApi\\": "src/MissArapSabunu/Infrastructure/Ui/PrivateApi/",
-            "MissArapSabunu\\PublicWeb\\": "src/MissArapSabunu/Infrastructure/Ui/PublicWeb/"
+            "DemoApp\\Common\\": "src/DemoApp/Common/",
+            "DemoApp\\Domain\\": "src/DemoApp/Domain/",
+            "DemoApp\\Infrastructure\\": "src/DemoApp/Infrastructure/",
+            "DemoApp\\PrivateApi\\": "src/DemoApp/Infrastructure/Ui/PrivateApi/",
+            "DemoApp\\PublicWeb\\": "src/DemoApp/Infrastructure/Ui/PublicWeb/"
         }
     },
     "autoload-dev": {

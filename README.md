@@ -16,7 +16,7 @@ An opinionated framework to develop CQRS applications using hexagonal architectu
 
 ## Installation
 ```bash
-composer create-project reformo/backednbase-project MyApplication
+composer create-project reformo/backendbase-project MyApplication
 ```
 
 ## Development Server

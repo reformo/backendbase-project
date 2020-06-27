@@ -1,0 +1,28 @@
+{% extends '@layout/default.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block additional_header %}
+
+{% endblock %}
+{% block content %}
+    <div class="customer-reviews">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="reviews-container">
+                        <div class="reviews-title">404 - Sayfa bulunamadı</div>
+                        <p class="lead">Ulaşmak istediğiniz sayfa silinmiş ya da yayından kaldırılmış olabilir.</p>
+                        <div class="btn-buynow"><a href="{{ url('home') }}" style="color:#fff">Ana Sayfa</a></div>
+
+
+                        </div>
+
+
+                    <a class="btn-loadmore" href="javascript:;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
