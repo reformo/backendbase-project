@@ -12,8 +12,6 @@ use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use function nl2br;
-use function strip_tags;
 
 class HomePageHandler implements RequestHandlerInterface
 {
@@ -29,23 +27,19 @@ class HomePageHandler implements RequestHandlerInterface
         ContentRepository $contentRepository,
         array $config
     ) {
-        $this->template                 = $template;
-        $this->config                   = $config;
-        $this->queryBus                 = $queryBus;
-        $this->contentRepository        = $contentRepository;
+        $this->template          = $template;
+        $this->config            = $config;
+        $this->queryBus          = $queryBus;
+        $this->contentRepository = $contentRepository;
     }
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        $guard            = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
-        $token            = $guard->generateToken();
-        $page      = $this->contentRepository->getContentByModuleName('home');
+        $guard = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
+        $token = $guard->generateToken();
+        $page  = $this->contentRepository->getContentByModuleName('home');
 
-
-
-        $data = [
-            'page' => $page,
-        ];
+        $data = ['page' => $page];
 
         return new HtmlResponse($this->template->render('app::home-page', $data));
     }

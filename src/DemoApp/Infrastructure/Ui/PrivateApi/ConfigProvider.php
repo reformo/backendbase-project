@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace DemoApp\PrivateApi;
 
 use BackendBase\Shared\Interfaces\MezzioHandlerConfigProvider;
+use DemoApp\PrivateApi\DemoModule\ConfigProvider as DemoModuleConfigProvider;
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
-use DemoApp\PrivateApi\DemoModule\ConfigProvider as DemoModuleConfigProvider;
-
 use function array_merge_recursive;
 
 class ConfigProvider

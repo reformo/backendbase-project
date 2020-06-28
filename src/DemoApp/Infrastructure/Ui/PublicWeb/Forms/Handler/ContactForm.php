@@ -28,19 +28,19 @@ class ContactForm implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        $guard             = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
-        $token             = $guard->generateToken();
-        $queryParams       = $request->getQueryParams();
-        $result            = $queryParams['r'] ?? '';
-        $message           = $queryParams['m'] ?? '';
-        $page      = $this->contentRepository->getContentByModuleName('contact');
+        $guard       = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
+        $token       = $guard->generateToken();
+        $queryParams = $request->getQueryParams();
+        $result      = $queryParams['r'] ?? '';
+        $message     = $queryParams['m'] ?? '';
+        $page        = $this->contentRepository->getContentByModuleName('contact');
 
         $data =[
             '__csrf' => $token,
             'result' => $result,
             'message' => $message,
             'queryParams' => $queryParams,
-            'page' => $page
+            'page' => $page,
 
         ];
 

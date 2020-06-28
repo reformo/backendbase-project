@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace DemoApp\PublicWeb;
 
 use BackendBase\Shared\Interfaces\MezzioHandlerConfigProvider;
+use DemoApp\PublicWeb\Contents\ConfigProvider as ContentsConfigProvider;
+use DemoApp\PublicWeb\DemoModule\ConfigProvider as DemoModuleConfigProvider;
+use DemoApp\PublicWeb\Forms\ConfigProvider as FormsConfigProvider;
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
-use DemoApp\PublicWeb\Contents\ConfigProvider as ContentsConfigProvider;
-use DemoApp\PublicWeb\Forms\ConfigProvider as FormsConfigProvider;
-use DemoApp\PublicWeb\DemoModule\ConfigProvider as DemoModuleConfigProvider;
-
 use function array_merge_recursive;
 
 class ConfigProvider
@@ -20,7 +19,6 @@ class ConfigProvider
 
     public function __construct()
     {
-
         $this->addConfigProviders(new FormsConfigProvider());
         $this->addConfigProviders(new DemoModuleConfigProvider());
         $this->addConfigProviders(new ContentsConfigProvider()); // keep at the end of the stack

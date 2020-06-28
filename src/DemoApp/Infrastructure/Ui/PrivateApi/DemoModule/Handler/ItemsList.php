@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace DemoApp\PrivateApi\DemoModule\Handler;
 
 use BackendBase\Domain\IdentityAndAccess\Exception\InsufficientPrivileges;
+use DemoApp\Domain\IdentityAndAccess\Model\Permissions;
 use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Permissions\Rbac\Role;
-use DemoApp\Domain\IdentityAndAccess\Model\Permissions;
-use DemoApp\Infrastructure\Persistence\Doctrine\Repository\DemoModuleRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
