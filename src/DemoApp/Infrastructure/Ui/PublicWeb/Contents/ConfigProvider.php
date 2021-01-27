@@ -23,14 +23,14 @@ class ConfigProvider implements MezzioHandlerConfigProvider
      * To add a bit of a structure, each section is defined in a separate
      * method which returns an array with its configuration.
      */
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencies(),
         ];
     }
 
-    public function registerRoutes(Application $app, MiddlewareFactory $factory) : void
+    public function registerRoutes(Application $app, MiddlewareFactory $factory): void
     {
         $app->get('/', Handler\HomePageHandler::class, 'home');
         $app->get('/{pageSlug:.+}', PageHandler::class, 'page'); // catch all
@@ -39,7 +39,7 @@ class ConfigProvider implements MezzioHandlerConfigProvider
     /**
      * Returns the container dependencies
      */
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             'invokables' => [],

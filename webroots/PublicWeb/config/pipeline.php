@@ -20,7 +20,7 @@ use Mezzio\Session\SessionMiddleware;
 use Laminas\Stratigility\Middleware\ErrorHandler;
 use RKA\Middleware\IpAddress;
 use BackendBase\Shared\Middleware\IpAddressSettings;
-
+use BackendBase\Shared\Middleware\LanguageSelectorMiddleware;
 /**
  * @var Application $app
  * @var MiddlewareFactory $factory
@@ -37,14 +37,16 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
             IpAddressSettings::HEADERS_TO_INSPECT
         ));
     $app->pipe(ErrorHandler::class);
-    $app->pipe(ServerUrlMiddleware::class);
-    $app->pipe(BaseUrlMiddleware::class);
     $app->pipe(
         static function (ServerRequestInterface $request, RequestHandlerInterface $handler) use ($container) : ResponseInterface {
             $config = $container->get('config');
             return $handler->handle($request->withAttribute('moduleName', $config['module-name']));
         }
     );
+    $app->pipe(LanguageSelectorMiddleware::class);
+    $app->pipe(ServerUrlMiddleware::class);
+    $app->pipe(BaseUrlMiddleware::class);
+
     $app->pipe(SessionMiddleware::class);
     $app->pipe(CsrfMiddleware::class);
     // Pipe more middleware here that you want to execute on every request:
@@ -78,7 +80,7 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     // - route-based validation
     // - etc.
    // $app->pipe(TemplateDefaultsMiddleware::class);
-    $app->pipe(LocalizationMiddleware::class);
+   // $app->pipe(LocalizationMiddleware::class);
     // Register the dispatch middleware in the middleware pipeline
     $app->pipe(DispatchMiddleware::class);
 

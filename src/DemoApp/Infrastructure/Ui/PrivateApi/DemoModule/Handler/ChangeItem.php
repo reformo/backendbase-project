@@ -13,9 +13,11 @@ use Laminas\Permissions\Rbac\Role;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use const ARRAY_FILTER_USE_KEY;
+
 use function array_filter;
 use function in_array;
+
+use const ARRAY_FILTER_USE_KEY;
 
 class ChangeItem implements RequestHandlerInterface
 {
@@ -27,7 +29,7 @@ class ChangeItem implements RequestHandlerInterface
         $this->genericRepository = $genericRepository;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         /**
          * @var Role
@@ -36,8 +38,9 @@ class ChangeItem implements RequestHandlerInterface
         if ($role->hasPermission(Permissions\DemoModule::DEMO_MODULE_MENU) === false) {
             throw InsufficientPrivileges::create('You dont have privilege to change demo module records');
         }
+
         $payload     = PayloadSanitizer::sanitize($request->getParsedBody());
-        $allowedKeys = ['region', 'name', 'image',  'isVisible', 'isDeleted'];
+        $allowedKeys = ['region', 'name', 'image', 'isVisible', 'isDeleted'];
         $payload     = array_filter($payload, static function ($key) use ($allowedKeys) {
             return in_array($key, $allowedKeys, true);
         }, ARRAY_FILTER_USE_KEY);

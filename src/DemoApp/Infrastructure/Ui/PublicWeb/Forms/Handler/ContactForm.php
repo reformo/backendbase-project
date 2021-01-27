@@ -14,8 +14,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ContactForm implements RequestHandlerInterface
 {
-    /** @var TemplateRendererInterface|null */
-    private $template;
+    private ?TemplateRendererInterface $template = null;
     private ContentRepository $contentRepository;
 
     public function __construct(
@@ -26,7 +25,7 @@ class ContactForm implements RequestHandlerInterface
         $this->contentRepository = $contentRepository;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $guard       = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
         $token       = $guard->generateToken();
@@ -35,7 +34,7 @@ class ContactForm implements RequestHandlerInterface
         $message     = $queryParams['m'] ?? '';
         $page        = $this->contentRepository->getContentByModuleName('contact');
 
-        $data =[
+        $data = [
             '__csrf' => $token,
             'result' => $result,
             'message' => $message,

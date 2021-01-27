@@ -32,6 +32,8 @@ use BackendBase\Shared\Middleware\PrivateApiAuthorizationMiddleware;
 use BackendBase\Shared\Middleware\PrivateApiAuthorizationMiddlewareFactory;
 use BackendBase\Shared\Middleware\CustomResponseHeadersMiddleware;
 use BackendBase\Shared\Middleware\CustomResponseHeadersMiddlewareFactory;
+use BackendBase\Shared\Middleware\LanguageSelectorMiddleware;
+use BackendBase\Shared\Middleware\LanguageSelectorMiddlewareFactory;
 use Redislabs\Module\ReJSON\ReJSON;
 use RateLimit\RedisRateLimiter;
 use BackendBase\Shared\Factory\RedisFactory;
@@ -40,7 +42,7 @@ use BackendBase\Shared\Factory\RedisRateLimiterFactory;
 use BackendBase\Shared\Middleware\CommandLogger;
 use BackendBase\Shared\Middleware\CommandLoggerFactory;
 use BackendBase\Domain\User\Interfaces\UserQuery;
-use BackendBase\Infrastructure\Persistence\Doctrine\Repository\CallRecordsRepository;
+
 
 return [
     'dependencies' => [
@@ -48,6 +50,7 @@ return [
         'factories'  => [
             CustomResponseHeadersMiddleware::class => CustomResponseHeadersMiddlewareFactory::class,
             PrivateApiAuthorizationMiddleware::class => PrivateApiAuthorizationMiddlewareFactory::class,
+            LanguageSelectorMiddleware::class => LanguageSelectorMiddlewareFactory::class,
             TacticianCommandBus::class => TacticianCommandBusFactory::class,
             CommandBus::class => CommandBusFactory::class,
             QueryBus::class => QueryBusFactory::class,

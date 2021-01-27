@@ -16,6 +16,15 @@ services:
     container_name: dev-local-redis
     ports:
       - 6379:6379
+  rabbitmq:
+    build: resources/docker/rabbitmq
+    container_name: dev-local-rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ./resources/docker/data/docker-rabbitmq-data:/var/lib/rabbitmq
+
   mailhog:
     image: mailhog/mailhog:latest
     container_name: dev-local-mailhog

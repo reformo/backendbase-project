@@ -42,21 +42,20 @@
         "rss": "https://github.com/reformo/backendbase-project/releases.atom"
     },
     "require": {
-        "php": "^7.4",
-        "reformo/backendbase-core": "^0.1"
+        "php": "^7.4 | ^8.0",
+        "reformo/backendbase-core": "dev-master"
     },
     "require-dev": {
-        "behat/behat": "^v3.7.0",
-        "doctrine/coding-standard": "^6.0.0",
-        "filp/whoops": "^2.7.3",
-        "laminas/laminas-development-mode": "^3.2.0",
-        "malukenho/mcbumpface": "^1.1.2",
-        "mezzio/mezzio-tooling": "^1.3.0",
-        "phpunit/phpunit": "^9.2.5",
+        "behat/behat": "^v3.8.1",
+        "doctrine/coding-standard": "^8.2.0",
+        "filp/whoops": "^2.9.2",
+        "laminas/laminas-development-mode": "^3.3.0",
+        "malukenho/mcbumpface": "^1.1.5",
+        "phpunit/phpunit": "^9.5.1",
         "roave/security-advisories": "dev-master",
         "rskuipers/php-assumptions": "^0.8.0",
-        "squizlabs/php_codesniffer": "^3.5.5",
-        "swoole/ide-helper": "^4.5.2"
+        "squizlabs/php_codesniffer": "^3.5.8",
+        "swoole/ide-helper": "^4.6.2"
     },
     "autoload": {
         "psr-4": {

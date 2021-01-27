@@ -15,8 +15,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class MainHandler implements RequestHandlerInterface
 {
-    /** @var TemplateRendererInterface|null */
-    private $template;
+    private ?TemplateRendererInterface $template = null;
     private $config;
     private $queryBus;
     private ContentRepository $contentRepository;
@@ -33,7 +32,7 @@ class MainHandler implements RequestHandlerInterface
         $this->contentRepository = $contentRepository;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $guard = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
         $token = $guard->generateToken();

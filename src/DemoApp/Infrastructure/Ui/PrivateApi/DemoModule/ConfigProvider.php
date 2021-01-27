@@ -16,14 +16,14 @@ use Mezzio\MiddlewareFactory;
  */
 class ConfigProvider implements MezzioHandlerConfigProvider
 {
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies'  => $this->getDependencies(),
         ];
     }
 
-    public function registerRoutes(Application $app, MiddlewareFactory $factory) : void
+    public function registerRoutes(Application $app, MiddlewareFactory $factory): void
     {
         $app->get('/items', Handler\ItemsList::class, 'demo_module.list');
         $app->post('/items', Handler\AddItem::class, 'demo_module.new');
@@ -33,7 +33,7 @@ class ConfigProvider implements MezzioHandlerConfigProvider
     /**
      * Returns the container dependencies
      */
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             'invokables' => [],

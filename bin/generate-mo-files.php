@@ -10,7 +10,7 @@ chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';
 
-$localeFiles = glob('config/backendbase/*/locale/*.php');
+$localeFiles = glob('config/autoload/*/locale/*.php');
 $moGenerator = new MoGenerator();
 $poGenerator = new PoGenerator();
 

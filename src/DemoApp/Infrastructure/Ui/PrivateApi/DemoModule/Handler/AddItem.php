@@ -26,7 +26,7 @@ class AddItem implements RequestHandlerInterface
         $this->genericRepository = $genericRepository;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         /**
          * @var Role
@@ -35,6 +35,7 @@ class AddItem implements RequestHandlerInterface
         if ($role->hasPermission(Permissions\DemoModule::DEMO_MODULE_MENU) === false) {
             throw InsufficientPrivileges::create('You dont have privilege to add demo module records');
         }
+
         $payload = PayloadSanitizer::sanitize($request->getParsedBody());
 
         $item = new NeredeSatilir();

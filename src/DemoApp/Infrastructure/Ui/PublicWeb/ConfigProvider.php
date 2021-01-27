@@ -10,6 +10,7 @@ use DemoApp\PublicWeb\DemoModule\ConfigProvider as DemoModuleConfigProvider;
 use DemoApp\PublicWeb\Forms\ConfigProvider as FormsConfigProvider;
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
+
 use function array_merge_recursive;
 
 class ConfigProvider
@@ -24,12 +25,12 @@ class ConfigProvider
         $this->addConfigProviders(new ContentsConfigProvider()); // keep at the end of the stack
     }
 
-    private function addConfigProviders(MezzioHandlerConfigProvider $configProvider) : void
+    private function addConfigProviders(MezzioHandlerConfigProvider $configProvider): void
     {
         $this->modules[] = $configProvider;
     }
 
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencies(),
@@ -38,7 +39,7 @@ class ConfigProvider
         ];
     }
 
-    public function registerRoutes(Application $app, MiddlewareFactory $factory) : void
+    public function registerRoutes(Application $app, MiddlewareFactory $factory): void
     {
         foreach ($this->modules as $module) {
             $module->registerRoutes($app, $factory);
@@ -48,7 +49,7 @@ class ConfigProvider
     /**
      * Returns the container dependencies
      */
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         $dependencies = [];
         foreach ($this->modules as $module) {
@@ -61,7 +62,7 @@ class ConfigProvider
     /**
      * Returns the templates configuration
      */
-    public function getTemplates() : array
+    public function getTemplates(): array
     {
       //  var_dump();exit();
         return [

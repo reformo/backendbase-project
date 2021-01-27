@@ -119,6 +119,17 @@ ALTER TABLE "admin"."permissions" OWNER TO "{{PG_USERNAME}}";
 -- Records of permissions
 -- ----------------------------
 
+INSERT INTO "admin"."permissions" VALUES ('ffeea241-94d4-4b26-920d-704376399c5d', 'collections', 'Sayfa Erişimi', 'collections-menu', '2020-05-24 05:15:53+00');
+INSERT INTO "admin"."permissions" VALUES ('c45e3e82-9f1c-40f5-b35c-3f4364a5d507', 'collections', 'Collection Bilgi Güncelleme', 'collections-edit', '2020-05-24 05:17:07+00');
+INSERT INTO "admin"."permissions" VALUES ('508a71b5-233d-4f4a-99e8-f59c35318b70', 'collections', 'Collection Bilgi Ekleme', 'collections-create', '2020-05-24 05:18:45+00');
+INSERT INTO "admin"."permissions" VALUES ('377f69fc-1639-4a12-8294-7ae79fc5d77b', 'users', 'Sayfa Erişimi', 'users-menu', '2020-05-24 05:33:26+00');
+INSERT INTO "admin"."permissions" VALUES ('b32d2c62-8616-4f79-8873-5b57e0d73c4f', 'users', 'Kullanıcı bilgi Güncelleme', 'users-edit', '2020-05-24 05:33:52+00');
+INSERT INTO "admin"."permissions" VALUES ('0f8e4a70-4a01-4808-8ed0-a50f335ff23e', 'users', 'Yeni Kullanıcı Tanımlama', 'user-create', '2020-05-24 05:34:23+00');
+INSERT INTO "admin"."permissions" VALUES ('37128f19-c311-4a46-b7ed-5ab6126cb260', 'users', 'Yetki Seviyesi İzinlerini Değiştirme', 'user-permissions', '2020-05-24 05:34:55+00');
+INSERT INTO "admin"."permissions" VALUES ('91c36946-9841-4adc-9c3a-ffaecd8de37e', 'cms', 'Sayfa Erişimi', 'cms-menu', '2020-05-26 09:45:35+00');
+INSERT INTO "admin"."permissions" VALUES ('76ca9fa9-022b-45a3-9389-36f31cb0295b', 'cms', 'İçerik Oluşturma', 'cms-create', '2020-05-26 09:45:57+00');
+INSERT INTO "admin"."permissions" VALUES ('2a9002ee-7a2c-4f53-a22d-632212b493ad', 'cms', 'İçerik Güncelleme', 'cms-edit', '2020-05-26 09:46:21+00');
+
 
 -- ----------------------------
 -- Table structure for roles
@@ -145,7 +156,7 @@ INSERT INTO "admin"."roles" VALUES ('905dc75a-22c2-47c8-9414-dcbdf3d405f6', 'Sup
 INSERT INTO "admin"."roles" VALUES ('fe1caf55-1421-4b81-bccd-90e20918d902', 'System Admin', 'admin', 90, '["collections-menu", "collections-edit", "collections-create", "users-menu", "users-edit", "user-create", "user-permissions", "cms-menu", "cms-create", "cms-edit", "demo-module-menu"]', 1, 0, '2020-05-24 05:08:16+00');
 INSERT INTO "admin"."roles" VALUES ('309111c1-e74a-4b62-b09a-8fb77684a188', 'Content Manager', 'editor', 90, '[ "cms-menu", "cms-create", "cms-edit"]', 1, 0, '2020-05-24 05:08:16+00');
 
-CREATE TABLE "admin"."permission_types" (
+CREATE TABLE "admin"."permissions_types" (
     "id" uuid NOT NULL,
     "name" varchar(255) NOT NULL,
     "slug" varchar(255) NOT NULL,
@@ -156,18 +167,18 @@ CREATE TABLE "admin"."permission_types" (
 )
 ;
 
-CREATE INDEX "permission_types_idx" ON "admin"."permission_types" (
+CREATE INDEX "permissions_types_idx" ON "admin"."permissions_types" (
     "slug",
     "is_active",
     "created_at",
     "is_protected"
 );
-ALTER TABLE "admin"."permission_types" OWNER TO "{{PG_USERNAME}}";
+ALTER TABLE "admin"."permissions_types" OWNER TO "{{PG_USERNAME}}";
 
-INSERT INTO "admin"."permission_types" VALUES ('2b34000b-dc96-440a-b924-5fd2218eaf1b', 'Collections', 'collections', 1, 1, '2017-11-06 23:47:00+00');
-INSERT INTO "admin"."permission_types" VALUES ('9a63e5b7-c1c0-4ad6-b3c3-c7ce9fdba879', 'CMS', 'cms', 1, 1, '2017-11-06 23:47:01+00');
-INSERT INTO "admin"."permission_types" VALUES ('800a8903-ab58-47e3-9747-a9c87728fc0f', 'Users', 'users', 1, 1, '2017-11-06 23:47:02+00');
-INSERT INTO "admin"."permission_types" VALUES ('5a4791df-7048-4b83-90bc-25a53abc5a11', 'Demo Module', 'demo-module', 1, 0, '2017-11-06 23:47:03+00');
+INSERT INTO "admin"."permissions_types" VALUES ('2b34000b-dc96-440a-b924-5fd2218eaf1b', 'Collections', 'collections', 1, 1, '2017-11-06 23:47:00+00');
+INSERT INTO "admin"."permissions_types" VALUES ('9a63e5b7-c1c0-4ad6-b3c3-c7ce9fdba879', 'CMS', 'cms', 1, 1, '2017-11-06 23:47:01+00');
+INSERT INTO "admin"."permissions_types" VALUES ('800a8903-ab58-47e3-9747-a9c87728fc0f', 'Users', 'users', 1, 1, '2017-11-06 23:47:02+00');
+INSERT INTO "admin"."permissions_types" VALUES ('5a4791df-7048-4b83-90bc-25a53abc5a11', 'Demo Module', 'demo-module', 1, 0, '2017-11-06 23:47:03+00');
 
 -- ----------------------------
 -- Indexes structure for table permissions
