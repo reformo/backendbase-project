@@ -36,7 +36,15 @@ class MainHandler implements RequestHandlerInterface
     {
         $guard = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
         $token = $guard->generateToken();
-        $page  = $this->contentRepository->getContentByModuleName('demo-module');
+        $slug  = [
+            'tr' => '/modules/demo-modulu',
+            'en' => '/modules/demo-module',
+        ];
+        $page  = $this->contentRepository->getContentBySlug(
+            $slug[$request->getAttribute('selectedLanguage')],
+            $request->getAttribute('selectedLanguage'),
+            $request->getAttribute('selectedRegion')
+        );
 
         $data = ['page' => $page];
 

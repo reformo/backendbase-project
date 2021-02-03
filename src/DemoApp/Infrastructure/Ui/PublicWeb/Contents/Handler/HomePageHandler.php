@@ -34,12 +34,21 @@ class HomePageHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $guard = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
-        $token = $guard->generateToken();
-        $page  = $this->contentRepository->getContentByModuleName('home');
+        $guard       = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
+        $token       = $guard->generateToken();
+        $moduleNames = [
+            'tr' => '/modules/ana-sayfa',
+            'en' => '/modules/home',
+        ];
+        $page        = $this->contentRepository->getContentBySlug(
+            $moduleNames[$request->getAttribute('selectedLanguage')],
+            $request->getAttribute('selectedLanguage'),
+            $request->getAttribute('selectedRegion')
+        );
 
-        $data = ['page' => $page];
-
-        return new HtmlResponse($this->template->render('app::home-page', $data));
+        return new HtmlResponse($this->template->render(
+            $page['templateFile'],
+            ['page' => $page]
+        ));
     }
 }

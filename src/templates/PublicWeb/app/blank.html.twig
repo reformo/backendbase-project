@@ -1,12 +1,12 @@
 {% extends '@layout/default.html.twig' %}
 
 {% block title %}<title>{{ page.serpTitle }}</title>{% endblock %}
-{% block seoMetaDescription %}<meta name="description" content="{{ page.description }}" />{% endblock %}
+{% block seoMetaDescription %}<meta name="description" content="{{ page.metaDescription }}" />{% endblock %}
 {% block seoRobots %}{% if page.robots != "" %}{{ page.robots }}{% endif %}{% endblock %}
 {% block seoKeywords %} <meta name="keywords" content="{{ page.keywords }}" />{% endblock %}
 
 {% block content %}
-<div class="content">
-    <h4>Demo Module</h4>
-</div>
+
+    {{ content|raw }}
+
 {% endblock %}

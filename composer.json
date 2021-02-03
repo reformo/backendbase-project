@@ -51,7 +51,7 @@
         "filp/whoops": "^2.9.2",
         "laminas/laminas-development-mode": "^3.3.0",
         "malukenho/mcbumpface": "^1.1.5",
-        "phpunit/phpunit": "^9.5.1",
+        "phpunit/phpunit": "^9.5.2",
         "roave/security-advisories": "dev-master",
         "rskuipers/php-assumptions": "^0.8.0",
         "squizlabs/php_codesniffer": "^3.5.8",

@@ -18,7 +18,7 @@ return [
         'optimizations' => -1,
         'extensions' => [
             BackendBase\Shared\Services\TwigExtension::class,
-            IntlExtension::class,
+            //IntlExtension::class,
             //I18nExtension::class
             // Comment out extensions and invokable dependencies below when you need it
             // TextExtension::class,
@@ -34,7 +34,7 @@ return [
     ],
     'dependencies' => [
         'invokables' => [
-            IntlExtension::class,
+            //IntlExtension::class,
             //I18nExtension::class,
             // Comment out extensions below when you need it
             // TextExtension::class,

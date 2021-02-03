@@ -32,15 +32,12 @@ class ContactForm implements RequestHandlerInterface
         $queryParams = $request->getQueryParams();
         $result      = $queryParams['r'] ?? '';
         $message     = $queryParams['m'] ?? '';
-        $page        = $this->contentRepository->getContentByModuleName('contact');
 
         $data = [
             '__csrf' => $token,
             'result' => $result,
             'message' => $message,
             'queryParams' => $queryParams,
-            'page' => $page,
-
         ];
 
         return new HtmlResponse($this->template->render('app::forms/contact-form', $data));

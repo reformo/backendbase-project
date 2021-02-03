@@ -6,7 +6,12 @@
 {% block seoKeywords %} <meta name="keywords" content="{{ page.keywords }}" />{% endblock %}
 
 {% block content %}
-<div class="content">
-    <h4>Demo Module</h4>
-</div>
+    <h1>{{ page.body.header1 }}</h1>
+    {% if page.body.heroImage is not empty %}<img src="{{ cdnUrl }}{{ page.body.heroImage }}" alt="{{ page.body.header1 }}" style="width:100%">{% endif %}
+    <div style="margin:20px 0px;">{{ page.body.summary }}</div>
+    {{ page.body.intro|raw }}
+
+    {{ page.body.contentBody|raw }}
+
+
 {% endblock %}

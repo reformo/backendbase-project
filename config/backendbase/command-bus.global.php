@@ -4,7 +4,7 @@ declare(strict_types=1);
 use BackendBase\Shared\Services\MessageBus\CommandHandlerFactory;
 use BackendBase\Domain\Collections\Command\AddNewCollectionItemHandler;
 use BackendBase\Domain\Collections\Command\UpdateCollectionItemHandler;
-
+use BackendBase\Domain\Collections\Command\DeleteCollectionItemHandler;
 return [
     'dependencies' => [
         'aliases' => [
@@ -16,7 +16,8 @@ return [
         'factories'  => [
         //    Command::class => CommandHandlerFactory::class
             AddNewCollectionItemHandler::class => CommandHandlerFactory::class,
-            UpdateCollectionItemHandler::class => CommandHandlerFactory::class
+            UpdateCollectionItemHandler::class => CommandHandlerFactory::class,
+            DeleteCollectionItemHandler::class => CommandHandlerFactory::class,
         ],
     ],
 ];
